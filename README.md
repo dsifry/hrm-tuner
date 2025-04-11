@@ -80,14 +80,15 @@ The script contains a variety of typing patterns to test your HRMs, including:
 Run the analysis script with optional arguments:
 
 ```sh
-python simpleAnalysis.py [--aggressive] [--zmk]
+python simpleAnalysis.py [--aggressive] [--zmk] [--verbose] [--no-explanation]
 ```
 
 Available arguments:
 
 - `--aggressive`: Suggests lower tapping resolution values for snappier modifier activation
 - `--zmk`: Outputs the configuration in ZMK-style behavior binding format for direct use in keymap files
-- `--help`: Shows the help message
+- `--verbose`: Includes detailed comments in the output
+- `--no-explanation`: Suppresses all explanatory text and only outputs the config values
 
 The analysis will show:
 
