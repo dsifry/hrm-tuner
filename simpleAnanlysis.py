@@ -38,6 +38,11 @@ parser.add_argument(
     action="store_true",
     help="Suggest lower tapping resolution for snappier mods.",
 )
+parser.add_argument(
+    "--zmk",
+    action="store_true",
+    help="Output as ZMK-style config block for direct use in keymap files.",
+)
 args = parser.parse_args()
 
 # Read and parse each log file
@@ -163,15 +168,13 @@ print("0: Custom (150ms) - Sunaku's personal settings")
 print("\nSuggested values:")
 print("-" * 80)
 
-# Conservative recommendation
 safe_gap_ms = 10
 raw_tap_resolution = int((tap_ceiling * 1000) + safe_gap_ms)
 if args.aggressive:
-    tapping_resolution = max(100, int(tap_ceiling * 1000))  # no buffer for speed
+    tapping_resolution = max(100, int(tap_ceiling * 1000))
 else:
     tapping_resolution = max(100, min(500, raw_tap_resolution))
 
-# Difficulty level logic
 if tapping_resolution >= 500:
     difficulty_level = 1
 elif tapping_resolution >= 400:
@@ -185,35 +188,49 @@ elif tapping_resolution >= 100:
 else:
     difficulty_level = 0
 
-print(f"#define DIFFICULTY_LEVEL {difficulty_level}  // Based on your typing speed")
-print(f"#define TAPPING_RESOLUTION {tapping_resolution}")
-
-# Other defines derived from tapping resolution
 index_holding_time = tapping_resolution + 20
 middy_holding_time = index_holding_time + 40
 ringy_holding_time = middy_holding_time + 30
 pinky_holding_time = ringy_holding_time + 20
 
-print(f"#define INDEX_HOLDING_TIME {index_holding_time}")
-print(f"#define MIDDY_HOLDING_TIME {middy_holding_time}")
-print(f"#define RINGY_HOLDING_TIME {ringy_holding_time}")
-print(f"#define PINKY_HOLDING_TIME {pinky_holding_time}")
+homey_streak_decay = tapping_resolution
+homey_repeat_decay = tapping_resolution + 150
+index_streak_decay = max(0, tapping_resolution - 50)
+index_repeat_decay = tapping_resolution + 150
+plain_holding_time = tapping_resolution + 50
+plain_repeat_decay = tapping_resolution + 150
+space_holding_time = tapping_resolution + 20
+space_repeat_decay = tapping_resolution
 
-print("\nAdditional recommended settings:")
-print(
-    f"#define HOMEY_STREAK_DECAY {tapping_resolution}  // Prevents unintended mods during typing"
-)
-print(f"#define HOMEY_REPEAT_DECAY {tapping_resolution + 150}  // For key auto-repeat")
-print(
-    f"#define INDEX_STREAK_DECAY {max(0, tapping_resolution - 50)}  // Faster shift activation"
-)
-print(
-    f"#define INDEX_REPEAT_DECAY {tapping_resolution + 150}  // For shift auto-repeat"
-)
-print(f"#define PLAIN_HOLDING_TIME {tapping_resolution + 50}")
-print(f"#define PLAIN_REPEAT_DECAY {tapping_resolution + 150}")
-print(f"#define SPACE_HOLDING_TIME {tapping_resolution + 20}")
-print(f"#define SPACE_REPEAT_DECAY {tapping_resolution}")
+if args.zmk:
+    print("\n// ZMK-style behavior binding config")
+    print("behaviors {")
+    print(f"  hrm_tap_hold {{ tapping-term-ms = <{tapping_resolution}>; }};")
+    print(
+        f"  quick_tap    {{ quick-tap-ms = <{max(100, tapping_resolution - 20)}>; }};"
+    )
+    print(f"  hold_trigger {{ hold-trigger-delay-ms = <{space_holding_time}>; }};")
+    print("};")
+else:
+    print(f"#define DIFFICULTY_LEVEL {difficulty_level}  // Based on your typing speed")
+    print(f"#define TAPPING_RESOLUTION {tapping_resolution}")
+    print(f"#define INDEX_HOLDING_TIME {index_holding_time}")
+    print(f"#define MIDDY_HOLDING_TIME {middy_holding_time}")
+    print(f"#define RINGY_HOLDING_TIME {ringy_holding_time}")
+    print(f"#define PINKY_HOLDING_TIME {pinky_holding_time}")
+    print("\nAdditional recommended settings:")
+    print(
+        f"#define HOMEY_STREAK_DECAY {homey_streak_decay}  // Prevents unintended mods during typing"
+    )
+    print(f"#define HOMEY_REPEAT_DECAY {homey_repeat_decay}  // For key auto-repeat")
+    print(
+        f"#define INDEX_STREAK_DECAY {index_streak_decay}  // Faster shift activation"
+    )
+    print(f"#define INDEX_REPEAT_DECAY {index_repeat_decay}  // For shift auto-repeat")
+    print(f"#define PLAIN_HOLDING_TIME {plain_holding_time}")
+    print(f"#define PLAIN_REPEAT_DECAY {plain_repeat_decay}")
+    print(f"#define SPACE_HOLDING_TIME {space_holding_time}")
+    print(f"#define SPACE_REPEAT_DECAY {space_repeat_decay}")
 
 print("\nNote: These are starting values. You may need to adjust them based on:")
 print("- Your typing speed and style")
