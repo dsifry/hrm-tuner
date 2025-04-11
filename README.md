@@ -77,18 +77,45 @@ The script contains a variety of typing patterns to test your HRMs, including:
 
 ### 2. Analyze Your Performance
 
-Run the analysis script:
+Run the analysis script with optional arguments:
 
 ```sh
-python simpleAnalysis.py
+python simpleAnalysis.py [--aggressive] [--zmk]
 ```
 
-You'll see:
+Available arguments:
+
+- `--aggressive`: Suggests lower tapping resolution values for snappier modifier activation
+- `--zmk`: Outputs the configuration in ZMK-style behavior binding format for direct use in keymap files
+- `--help`: Shows the help message
+
+The analysis will show:
 
 - Per-key hold times
 - Tap vs hold buckets for HRM keys
 - Average, std deviation, min, max for each key
 - Suggested fields for good `config.h` based on your typing data
+
+### Analysis Output
+
+The analysis provides three main sections:
+
+1. **Key Timing Analysis**
+
+   - Shows how long you hold each key when typing
+   - Includes average hold time, standard deviation, and min/max values
+   - Helps identify your natural typing rhythm
+
+2. **Home Row Modifier Analysis**
+
+   - Focuses on home row keys (a,s,d,f,j,k,l,;)
+   - Separates taps (under 200ms) from holds (over 200ms)
+   - Helps tune modifier activation timing
+
+3. **Suggested ZMK Configuration**
+   - Provides difficulty level based on your typing speed
+   - Suggests timing values for your ZMK config
+   - Includes additional settings for fine-tuning
 
 ### Log Format
 
