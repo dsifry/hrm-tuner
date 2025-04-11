@@ -54,16 +54,16 @@ pip install -r requirements.txt
 mkdir -p log
 ```
 
-2. Start the keyboard logger:
-
-```sh
-python main.py start
-```
-
-3. Type the test script:
+2. View/prep the test script:
 
 ```sh
 cat TYPING-SCRIPT
+```
+
+3. Start the keyboard logger:
+
+```sh
+python main.py start
 ```
 
 The script contains a variety of typing patterns to test your HRMs, including:
@@ -92,7 +92,7 @@ You'll see:
 
 ### Log Format
 
-Logs are saved in `./log/` and structured like this (JSON):
+Raw keyboard logs are saved in `./log/` and structured like this (JSON):
 
 ```json
 {
