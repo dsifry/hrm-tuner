@@ -16,11 +16,11 @@ home_row_tap_durations = defaultdict(list)
 
 
 def parse_timestamp(ts):
-    if isinstance(ts, float):  # high-precision format
+    if isinstance(ts, float):
         return datetime.fromtimestamp(ts)
     elif isinstance(ts, str):
         try:
-            return datetime.strptime(ts, "%Y%m%d_%H%M%S")  # legacy format
+            return datetime.strptime(ts, "%Y%m%d_%H%M%S")
         except ValueError:
             try:
                 return datetime.fromisoformat(ts)
@@ -35,7 +35,7 @@ for filepath in glob.glob(pattern):
         with open(filepath, "r") as f:
             raw = f.read().strip()
             outer = json.loads(raw)
-            if isinstance(outer, str):  # Handle double-encoded legacy format
+            if isinstance(outer, str):
                 outer = json.loads(outer)
             events = outer.get("records", [])
     except Exception:
@@ -99,6 +99,10 @@ print("Holds: Longer presses (over 200ms) - these are likely modifier activation
 print("\nHome row key statistics:")
 print("-" * 80)
 
+# Analyze taps and holds to extract thresholds
+tap_ceiling = 0
+hold_floor = float("inf")
+
 for key in sorted(home_row_keys):
     taps = home_row_tap_durations.get(key, [])
     holds = home_row_hold_durations.get(key, [])
@@ -108,11 +112,22 @@ for key in sorted(home_row_keys):
             return f"0 {label}s"
         avg = statistics.mean(data)
         std = statistics.stdev(data) if len(data) > 1 else 0
+        min_v = min(data)
+        max_v = max(data)
         return (
             f"{len(data)} {label}s "
             f"(avg = {avg:.4f}s, std = {std:.4f}s, "
-            f"min = {min(data):.4f}s, max = {max(data):.4f}s)"
+            f"min = {min_v:.4f}s, max = {max_v:.4f}s)"
         )
+
+    if taps:
+        tap_max = max(taps)
+        tap_std = statistics.stdev(taps) if len(taps) > 1 else 0
+        tap_ceiling = max(tap_ceiling, tap_max + tap_std)
+
+    if holds:
+        hold_min = min(holds)
+        hold_floor = min(hold_floor, hold_min)
 
     tap_stats = stats("tap", taps)
     hold_stats = stats("hold", holds)
@@ -137,15 +152,12 @@ print("0: Custom (150ms) - Sunaku's personal settings")
 print("\nSuggested values:")
 print("-" * 80)
 
-# Calculate base tapping resolution from space key
-space_durations = all_hold_durations.get("SPACE", [])
-if space_durations:
-    tapping_resolution = int(statistics.mean(space_durations) * 1000)
-else:
-    tapping_resolution = 150  # Default to sunaku's setting
+# Conservative recommendation based on tap + std and hold min
+safe_gap_ms = 10
+raw_tap_resolution = int((tap_ceiling * 1000) + safe_gap_ms)
+tapping_resolution = max(100, min(500, raw_tap_resolution))
 
-# Calculate difficulty level based on tapping resolution
-difficulty_level = 0
+# Difficulty level logic
 if tapping_resolution >= 500:
     difficulty_level = 1
 elif tapping_resolution >= 400:
@@ -156,11 +168,13 @@ elif tapping_resolution >= 200:
     difficulty_level = 4
 elif tapping_resolution >= 100:
     difficulty_level = 5
+else:
+    difficulty_level = 0
 
 print(f"#define DIFFICULTY_LEVEL {difficulty_level}  // Based on your typing speed")
 print(f"#define TAPPING_RESOLUTION {tapping_resolution}")
 
-# Calculate other timing parameters based on the relationships
+# Other defines derived from tapping resolution
 index_holding_time = tapping_resolution + 20
 middy_holding_time = index_holding_time + 40
 ringy_holding_time = middy_holding_time + 30
@@ -171,18 +185,21 @@ print(f"#define MIDDY_HOLDING_TIME {middy_holding_time}")
 print(f"#define RINGY_HOLDING_TIME {ringy_holding_time}")
 print(f"#define PINKY_HOLDING_TIME {pinky_holding_time}")
 
-# Additional recommended settings
 print("\nAdditional recommended settings:")
 print(
     f"#define HOMEY_STREAK_DECAY {tapping_resolution}  // Prevents unintended mods during typing"
 )
 print(f"#define HOMEY_REPEAT_DECAY {tapping_resolution + 150}  // For key auto-repeat")
 print(
-    f"#define INDEX_STREAK_DECAY {tapping_resolution - 50}  // Faster shift activation"
+    f"#define INDEX_STREAK_DECAY {max(0, tapping_resolution - 50)}  // Faster shift activation"
 )
 print(
     f"#define INDEX_REPEAT_DECAY {tapping_resolution + 150}  // For shift auto-repeat"
 )
+print(f"#define PLAIN_HOLDING_TIME {tapping_resolution + 50}")
+print(f"#define PLAIN_REPEAT_DECAY {tapping_resolution + 150}")
+print(f"#define SPACE_HOLDING_TIME {tapping_resolution + 20}")
+print(f"#define SPACE_REPEAT_DECAY {tapping_resolution}")
 
 print("\nNote: These are starting values. You may need to adjust them based on:")
 print("- Your typing speed and style")
