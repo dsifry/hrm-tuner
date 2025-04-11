@@ -2,6 +2,7 @@ import os
 import glob
 import json
 import statistics
+import argparse
 from datetime import datetime
 from collections import defaultdict
 
@@ -28,6 +29,16 @@ def parse_timestamp(ts):
                 return None
     return None
 
+
+parser = argparse.ArgumentParser(
+    description="Analyze typing data to tune ZMK HRM config."
+)
+parser.add_argument(
+    "--aggressive",
+    action="store_true",
+    help="Suggest lower tapping resolution for snappier mods.",
+)
+args = parser.parse_args()
 
 # Read and parse each log file
 for filepath in glob.glob(pattern):
@@ -152,10 +163,13 @@ print("0: Custom (150ms) - Sunaku's personal settings")
 print("\nSuggested values:")
 print("-" * 80)
 
-# Conservative recommendation based on tap + std and hold min
+# Conservative recommendation
 safe_gap_ms = 10
 raw_tap_resolution = int((tap_ceiling * 1000) + safe_gap_ms)
-tapping_resolution = max(100, min(500, raw_tap_resolution))
+if args.aggressive:
+    tapping_resolution = max(100, int(tap_ceiling * 1000))  # no buffer for speed
+else:
+    tapping_resolution = max(100, min(500, raw_tap_resolution))
 
 # Difficulty level logic
 if tapping_resolution >= 500:
