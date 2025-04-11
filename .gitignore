@@ -1,6 +1,7 @@
 # Log files
 log/
 *.log
+keyboard_log_*.json
 
 # Python virtual environment
 venv/
@@ -36,6 +37,15 @@ wheels/
 *.swp
 *.swo
 .DS_Store
+
+# Local development settings
+.env
+.env.local
+
+# Backup files
+*~
+*.bak
+*.backup
 
 # Local development settings
 .env
