@@ -152,4 +152,4 @@ You can use these to customize your HRM behavior based on your actual typing dat
 
 ### License
 
-MIT (waiting on confirmation from Chih-Yuan) - see `LICENSE.md` for full details.
+MIT - see `LICENSE.md` for full details.
