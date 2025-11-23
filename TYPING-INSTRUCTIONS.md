@@ -43,7 +43,7 @@ This reveals your real-world timing patterns
 - When you want "Good", hold 'j' then tap 'g'
 - When you want "jersey", just type normally
 
-### ✅ Type in flow state for Part 11
+### ✅ Type in flow state for Part 12
 This is where the issues happen, so this is the most important data!
 
 ### ✅ Include your mistakes
@@ -82,7 +82,7 @@ If you type "good" when you meant "Good", that tells us your HRM timing needs ad
 
 1. **Don't slow down for accuracy** - Type at YOUR normal speed
 2. **Don't pause to fix mistakes** - Just keep going
-3. **Type Part 11 really fast** - This reveals the real issues
+3. **Type Part 12 really fast** - This reveals the real issues
 4. **Be natural** - Pretend you're writing a quick email
 
 ## After Typing
@@ -116,8 +116,8 @@ Ready? Run:
 
 Or manually:
 ```bash
-python main.py start
+python3 main.py start
 # Type the test
 # Press Control-C
-python hrmAnalysis.py --verbose
+python3 hrmAnalysis.py --verbose
 ```

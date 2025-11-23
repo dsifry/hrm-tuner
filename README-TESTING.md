@@ -22,10 +22,10 @@ That's it! The script will guide you through everything.
    open TYPING-SCRIPT-HRM
    ```
 
-3. **Type through all 11 sections**
+3. **Type through all 12 sections**
    - Type at YOUR normal speed
    - **TYPOS ARE FINE!** We only measure timing!
-   - Focus on Part 11 (flow state) - type it FAST!
+   - Focus on Part 12 (flow state challenge) - type it FAST!
 
 4. **Stop logging:**
    - Press `Control-C`
@@ -40,7 +40,7 @@ That's it! The script will guide you through everything.
 ### ✅ DO:
 - Type at your normal/fast speed
 - Make mistakes - they show where HRMs fail!
-- Type Part 11 really fast (flow state)
+- Type Part 12 really fast (flow state challenge)
 - Use your HRMs as you intend (even if they don't work yet)
 
 ### ❌ DON'T:

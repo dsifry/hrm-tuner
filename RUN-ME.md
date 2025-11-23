@@ -11,7 +11,7 @@ Everything is now set up! Just run:
 1. **Logger starts** - you'll see instructions
 2. **Type the test** - open TYPING-SCRIPT-HRM and type naturally
    - **TYPOS ARE FINE!** We only measure timing!
-   - Type fast, especially Part 11 (flow state)
+   - Type fast, especially Part 12 (flow state challenge)
 3. **Press Control-C** when done
 4. **Analysis runs** - shows your timing and ZMK recommendations
 

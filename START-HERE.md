@@ -25,7 +25,7 @@ This walks you through everything automatically!
 - ✅ **Type at your normal/fast speed**
 - ✅ **Typos are HELPFUL data** (they show where HRMs fail!)
 - ✅ **Errors are EXPECTED and IGNORED**
-- ✅ **Flow state typing** (Part 11) is most important
+- ✅ **Flow state typing** (Part 12) is most important
 - ❌ **Don't slow down** for accuracy
 - ❌ **Don't fix mistakes** - just keep going
 
@@ -113,7 +113,7 @@ Copy config to your keymap, flash your Glove80, test!
 **Manual:**
 ```bash
 # 1. Start logging
-python main.py start
+python3 main.py start
 
 # 2. Open test in another window
 cat TYPING-SCRIPT-HRM
@@ -122,7 +122,7 @@ cat TYPING-SCRIPT-HRM
 # 4. Press Control-C when done
 
 # 5. Analyze
-python hrmAnalysis.py --verbose
+python3 hrmAnalysis.py --verbose
 ```
 
 ---
@@ -172,7 +172,7 @@ Plus specific values for space timing and possibly positional hold-tap configura
 ./quick-start.sh
 ```
 
-**Remember:** Type fast, make mistakes, and Part 11 (flow state) is the most important! 🚀
+**Remember:** Type fast, make mistakes, and Part 12 (flow state challenge) is the most important! 🚀
 
 ---
 

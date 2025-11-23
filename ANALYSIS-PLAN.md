@@ -80,7 +80,7 @@ Possible solutions:
 ### Step 1: Capture Your Typing Data
 
 ```bash
-python main.py start
+python3 main.py start
 ```
 
 Then type through `TYPING-SCRIPT-HRM` naturally.
@@ -101,7 +101,7 @@ Press Control-C when done.
 ### Step 2: Analyze the Data
 
 ```bash
-python hrmAnalysis.py --verbose
+python3 hrmAnalysis.py --verbose
 ```
 
 This will show you:
@@ -196,7 +196,7 @@ Key timing parameters explained:
 
 Ready to start? Run:
 ```bash
-python main.py start
+python3 main.py start
 ```
 
 Then open `TYPING-SCRIPT-HRM` and start typing!
