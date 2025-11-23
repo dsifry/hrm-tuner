@@ -20,7 +20,10 @@ Tune your keyboard's timing parameters based on YOUR actual typing behavior, not
 - [Project Structure](#project-structure)
 - [Troubleshooting](#troubleshooting)
 - [Advanced Topics](#advanced-topics)
+- [Real-World Example](#real-world-example)
+- [Contributing](#contributing)
 - [License](#license)
+- [Additional Resources](#additional-resources)
 
 ---
 
