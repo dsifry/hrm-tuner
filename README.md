@@ -214,10 +214,13 @@ Press **Control-C** in the terminal running the logger.
 **Option A: HRM-Specific Analysis (Recommended)**
 
 ```bash
-python3 hrmAnalysis.py
+python3 hrmAnalysis.py [--verbose]
 ```
 
 This separates pure taps from HRM holds for accurate recommendations.
+
+Available flags:
+- `--verbose`: Include detailed explanations in output
 
 **Option B: Simple Analysis**
 
@@ -434,6 +437,16 @@ Based on analysis results, your keymap might look like:
 | `constants.py` | Configuration constants |
 | `log.py` | Log file I/O |
 | `utils.py` | Helper functions |
+
+### Additional Documentation
+
+| File | Purpose |
+|------|---------|
+| `START-HERE.md` | Quick reference guide with workflow overview |
+| `ANALYSIS-PLAN.md` | Development notes and analysis methodology |
+| `README-TESTING.md` | Testing methodology documentation |
+| `RUN-ME.md` | Simple workflow instructions |
+| `TYPING-INSTRUCTIONS.md` | Detailed guidelines for typing tests |
 
 ### Generated Files
 
