@@ -1,0 +1,126 @@
+===== HRM Timing Analysis Test Script =====
+This script is designed to test home row modifier (HRM) timing for 'f' and 'j' as shift keys,
+and space key combinations for quotes.
+
+⚠️  IMPORTANT INSTRUCTIONS:
+- Type NATURALLY at YOUR normal speed
+- Don't worry about typos, spelling errors, or mistakes!
+- We only care about TIMING, not accuracy
+- Type in your natural "flow state" - errors are EXPECTED and IGNORED
+- The analysis only looks at keystroke timing patterns, not what you type
+- If you mess up a word, just keep going!
+
+Press Control-C when finished.
+
+=== Part 1: Natural words with 'f', 'j', and 'u' (baseline taps) ===
+Type these words normally to establish your baseline tap timing:
+
+fling fjordffle graffleffle waffle raffle baffle
+jersey fjord ejaculate belief fjell fjord
+jeff jeffery jefferson jeer jeans jealous jealousy
+fromафт draft drift graft shaft
+jump jungle jigsaw jargon jolt jostle
+
+Test 'u' key specifically (to check for hardware issues):
+under unity unique upload update usually universe
+push pull supreme value cultureature ubuntu
+unusual unusual unusual pursuit pursuit pursuit
+
+=== Part 2: 'j' as Shift + Left Hand Keys (HRM holds) ===
+Now use 'j' as shift with your LEFT hand keys. Hold 'j' then tap the target key:
+
+Good World Estate React Typewriter Astonishing
+Dear Friend Great Seeing Discuss ZoneXter
+Quiet Wonder Erase Test Advice Science
+Five Four Three Two One
+Backstick Braces Around Caret ~tilde
+
+=== Part 3: 'f' as Shift + Right Hand Keys (HRM holds) ===
+Now use 'f' as shift with your RIGHT hand keys. Hold 'f' then tap the target key:
+
+Python Unified Install Open Loving Kind
+Happy Normal Many Joy Yonder Update
+Item Phone Happy Lincoln Unity Navigate
+Number Million Loop Keyboard Joyful
+Pipe Backslash Period Comma Semicolon
+
+=== Part 4: Testing 'j' as Shift (intentional capitals) ===
+HOLD 'j' key and tap the letter to make it capital. Type these:
+
+Good Good Good (hold 'j' then tap 'g' for each)
+Nice Nice Nice (hold 'j' then tap 'n' for each)
+World World World (hold 'j' then tap 'w' for each)
+Estate Estate Estate (hold 'j' then tap 'e' for each)
+
+=== Part 5: Normal 'j' words (should NOT capitalize) ===
+Type these words normally - 'j' should just be 'j', not shift:
+
+just just just (normal typing, lowercase)
+jump jump jump (normal typing, lowercase)
+jersey jersey jersey (normal typing with 'j' slide)
+jigsaw jigsaw jigsaw (normal typing, lowercase)
+
+=== Part 6: Space + m for single quote (') ===
+Practice holding space and tapping 'm' to produce a single quote:
+
+It's a lovely day. Don't worry about it.
+I'm going to the store. She's not here.
+We're happy to help. They're coming soon.
+You're right about that. He's already gone.
+
+=== Part 7: Space + n for double quote (") ===
+Practice holding space and tapping 'n' to produce a double quote:
+
+He said "hello" to me.
+The book titled "Freedom" is great.
+She whispered "thank you" quietly.
+They announced "victory" loudly.
+
+Now type some sentences that combine both quote types naturally:
+"It's amazing," she said. "Don't you think so?"
+He replied, "I'm sure it's fine." She wasn't convinced.
+"We're ready," they shouted. "Let's begin!"
+
+=== Part 8: Mixed HRM patterns (realistic usage) ===
+Type this paragraph using your HRMs naturally:
+
+Good morning! I'm typing this "test" to see how my Home Row Modifiers work.
+It's really interesting to analyze the timing. Don't you think it's helpful?
+My goal is to type "effortlessly" without errors. Jersey folks might say it's
+"wicked cool" - and they're right! I believe this will improve my typing speed.
+
+=== Part 9: Fast typing with potential HRM conflicts ===
+Type these sentences quickly (this will reveal timing issues):
+
+just jump over the jersey barrier
+jefferson joked about jealous jaguars
+belief in fjords is justified by geography
+waffle raffle baffle shuffle muffle truffle
+
+=== Part 10: Capitals with both f and j HRMs ===
+Practice using both f and j as shift modifiers:
+
+The Quick Brown Fox Jumps Over The Lazy Dog
+Python Programming Is Really Quite Nice
+Happy New Year To Everyone Everywhere
+Justice Prevails When Truth Is Honored
+
+=== Part 11: Quote-heavy text ===
+Type this to test space+m and space+n combinations:
+
+"Don't panic," he said. "It's going to be okay."
+I replied, "You're absolutely right. We're fine."
+She asked, "What's the plan?" and I said, "Let's go."
+They shouted, "We're ready!" It's time to begin.
+
+=== Part 12: The "flow state" challenge ===
+Type this paragraph as FAST as you can, like you're in flow mode.
+This will reveal the real timing issues:
+
+Just jump quickly over the jersey barrier and grab the good waffle.
+Jefferson believed that fjords are beautiful geological formations.
+Don't worry about getting it perfect - we're just measuring flow!
+It's really important to type this naturally and quickly.
+
+=== Done! ===
+Press Control-C to stop the logger.
