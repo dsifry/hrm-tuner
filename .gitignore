@@ -1,3 +1,7 @@
+# Personal keymap files (contain user-specific keyboard configurations)
+*.keymap
+daves-*.keymap
+
 # Log files
 log/
 *.log
