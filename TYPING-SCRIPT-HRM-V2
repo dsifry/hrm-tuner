@@ -1,0 +1,115 @@
+===== HRM Timing Analysis Test Script v2 =====
+Designed to test home row modifiers with realistic typing patterns.
+
+INSTRUCTIONS:
+- Type NATURALLY at YOUR normal speed
+- Typos are fine - we only measure TIMING
+- If you mess up, keep going!
+
+Press Control-C when finished.
+
+=== Part 1: Baseline - Normal words with f and j ===
+Type these words normally (no capitals intended):
+
+draft shift craft after before offer buffer differ
+just jump jolt jest join enjoy adjust major
+effort different traffic affect suffer afford offer refer
+major project inject subject adjust reject object eject
+
+=== Part 2: Sentence-initial capitals (the problem area) ===
+Start each sentence with a capital using j+key. These are where "jgood" happens:
+
+Good morning. Great to see you. Go ahead and start.
+What do you think? When should we begin? Where is it?
+Should we change back? See if this works. Start here.
+Every time this happens. Enter the command. Edit the file.
+Did you notice? Don't forget. Delete that line.
+
+=== Part 3: Technical vocabulary you actually type ===
+Type these programming and keyboard terms:
+
+keymap config layer modifier binding behavior
+Command-backspace Control-C Shift-Enter Alt-Tab
+ZMK QMK firmware parameter threshold timing
+sticky shift one-shot hold-tap tapping-term
+
+=== Part 4: Mixed capitals mid-sentence ===
+Capital letters that appear after punctuation or mid-thought:
+
+I'm seeing issues with Good where we see jgood instead.
+The Command key and Shift key need different timing.
+Check the LAYER_Typing and RSFT parameters carefully.
+Use balanced flavor, not tap-preferred for overlap.
+
+=== Part 5: f as Shift with right hand ===
+Hold f, tap right-hand keys for capitals:
+
+Python JavaScript TypeScript Node NPM Yarn
+Happy Help Home Hold Here How High
+Just Keep Looking Maybe Never Open
+Upload Install Unify Improve Optimize
+
+=== Part 6: Quick sentences with mixed HRM usage ===
+
+Just checking if the modifier works properly.
+Good question about the keyboard configuration.
+Should we adjust the timing parameters now?
+What happens when you hold down the shift key?
+Great, that seems to be working correctly.
+
+=== Part 7: Realistic paragraph - type naturally ===
+
+I'm seeing issues again with capitalization when using home row keys,
+especially at the beginning of sentences or words like Good where we
+see jgood instead. Should we change back to balanced from tap-preferred?
+What if I want that to just act as a shift key? If tapped, then it is
+a sticky shift, and if held it is as if you were holding down the key.
+
+=== Part 8: Code and config snippets ===
+
+#define INDEX_HOLDING_TIME 240
+#define THUMB_HOLDING_TYPE "balanced"
+bindings = <&mo>, <&kp>;
+compatible = "zmk,behavior-hold-tap";
+tapping-term-ms = <THUMB_HOLDING_TIME>;
+
+=== Part 9: Fast flow - type as quickly as possible ===
+This reveals real timing issues. GO FAST:
+
+Just jump over and grab the keyboard config file.
+Good settings should prevent false shift activation.
+What timing values work best for your typing style?
+Should the sticky shift decay be longer or shorter?
+Edit the keymap and test the new behavior definition.
+Great, now we can see if the changes helped at all.
+
+=== Part 10: Problem patterns - rapid fire ===
+These specific patterns often cause issues:
+
+Good Good Great Great Go Go Get Get
+Just just Jump jump Jersey jersey Join join
+fjord fjord jeff jeff jelly jelly jest jest
+flow flow from from after after effort effort
+
+=== Part 11: Natural conversation ===
+Type as if you're chatting:
+
+So what does stumb do exactly?
+Can you explain the difference between tap and hold?
+What if I want longer sticky shift timeout?
+Should I use balanced or tap-preferred flavor?
+Good point about the keystroke overlap issue.
+Just to clarify, the hold activates the layer right?
+
+=== Part 12: Final flow challenge ===
+Type this entire paragraph as FAST as you naturally can:
+
+Good morning! Just wanted to check if the keyboard settings are working
+properly now. Should we adjust the timing or is it good enough? What do
+you think about changing the sticky shift to have a longer timeout? Great
+question - the hold-tap behavior needs careful tuning. Don't forget to
+test after making changes. Every keystroke matters when we're measuring
+timing. Just keep typing naturally and we'll see what happens.
+
+=== Done! ===
+Press Control-C to stop the logger.
